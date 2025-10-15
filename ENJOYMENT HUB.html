@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entertainment Hub</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
+        header { background: #222; color: #fff; padding: 1em 2em; text-align: center; }
+        main { max-width: 900px; margin: 2em auto; background: #fff; padding: 2em; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        section { margin-bottom: 2em; }
+        h2 { color: #333; }
+        .grid { display: flex; gap: 1em; flex-wrap: wrap; }
+        .card { background: #fafafa; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); padding: 1em; flex: 1 1 250px; min-width: 220px; }
+        img { max-width: 100%; border-radius: 4px; }
+        .music-player { display: flex; flex-direction: column; align-items: flex-start; }
+        audio { width: 100%; margin-top: 0.5em; }
+    </style>
+</head>
+<body>
+    <nav style="background:#333;color:#fff;padding:0.5em 2em;display:flex;gap:2em;align-items:center;">
+    <span style="font-weight:bold;font-size:1.2em;">Entertainment Hub</span>
+    <span id="clock" style="margin-left:auto;font-size:1.1em;"></span>
+        <a href="#movies" style="color:#fff;text-decoration:none;">Movies</a>
+        <a href="#images" style="color:#fff;text-decoration:none;">Images</a>
+        <a href="#music" style="color:#fff;text-decoration:none;">Music</a>
+        <a href="#submit-movie" style="color:#fff;text-decoration:none;">Submit Movie</a>
+        <a href="#submit-song" style="color:#fff;text-decoration:none;">Submit Song</a>
+    </nav>
+    <header>
+        <h1>Entertainment Hub</h1>
+        <p>Your source for movies, images, and music</p>
+    </header>
+    <main>
+        <section id="movies">
+            <h2>Movies</h2>
+            <div class="grid">
+                <div class="card">
+                    <div id="movie-player">
+                <video width="840" height="360"  loop>
+    <source src="aaah.mp4" type="video/mp4">
+</video>
+                    <h3>zach (2010)</h3>
+                    <p><strong>Genre:</strong> comedy, Thriller</p>
+                    <p><strong>Cast:</strong> Zach,mr India</p>
+                    <p><strong>Description:</strong> a wierd boy named zach pranking a worker.</p>
+                    <button onclick="playMovie('zach')">Play</button>
+                </div>
+                <div class="card">
+                    <div id="movie-player">
+                <video width="840" height="360"  loop>
+    <source src="palmer.mp4" type="video/mp4">
+</video>
+                    <h3>palmer (2023)</h3>
+                    <p><strong>Genre:</strong>action</p>
+                    <p><strong>Cast:</strong> cole palmer</p>
+                    <p><strong>Description:</strong> A socer player.</p>
+                    <button onclick="playMovie('palmer')">Play</button>
+                </div>
+                <div class="card">
+                    <div id="movie-player">
+                <video width="840" height="360"  loop>
+    <source src="memo.mp4" type="video/mp4">
+</video>
+                    <h3>musics (2018)</h3>
+                    <p><strong>Genre:</strong> musicians</p>
+                    <p><strong>Cast:</strong>Ariana,xxxtentacion,etc</p>
+                    <p><strong>Description:</strong> play list from the past.</p>
+                    <button onclick="playMovie('past')">Play</button>
+                </div>
+            </div>
+            <div id="movie-play-message" style="margin-top:1em;color:#0077cc;font-weight:bold;"></div>
+            </div>
+        </section>
+        <section id="images">
+            <h2>Images</h2>
+            <div style="text-align:center;">
+                <img id="slideshow-img" src="" alt="Slideshow" style="max-width:400px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+                <div style="margin-top:1em;">
+                    <button onclick="prevImage()">Previous</button>
+                    <button onclick="nextImage()">Next</button>
+                </div>
+                <div id="img-caption" style="margin-top:0.5em;color:#555;"></div>
+            </div>
+        </section>
+        <section id="music">
+            <h2>Music</h2>
+            <div class="grid">
+                <div class="card music-player">
+                    <strong>Title:</strong>AMADALLAH<br>
+                    <strong>Artist:</strong>Seyi Vibez<br>
+                    <strong>Album:</strong> amadallah<br>
+                    <strong>Genre:</strong> afro beat<br>
+                    <strong>Year:</strong> 2020<br>
+                    <audio controls>
+                        <source src="Seyi-Vibez-Amdallah.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="card music-player">
+                    <strong>Title:</strong>+234<br>
+                    <strong>Artist:</strong>seyi Vibez<br>
+                    <strong>Album:</strong>AMADALLAH<br>
+                    <strong>Genre:</strong>Afro beat<br>
+                    <strong>Year:</strong> 2020<br>
+                    <audio controls>
+                        <source src="Seyi-Vibez-234.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+        </section>
+    </main>
+        <section id="submit-movie">
+            <h2>Submit Your Movie</h2>
+            <form id="movieForm" onsubmit="submitMovie(event)" style="max-width:400px;margin:auto;">
+                <label>Movie Name:<br><input type="text" name="name" required></label><br>
+                <label>Cast:<br><input type="text" name="cast" required></label><br>
+                <label>Genre:<br><input type="text" name="genre" required></label><br>
+                <label>Description:<br><textarea name="description" required></textarea></label><br>
+                <label>Year:<br><input type="number" name="year" required></label><br>
+                <button type="submit">Submit Movie</button>
+            </form>
+            <div id="movieSubmitMsg" style="color:green;margin-top:1em;"></div>
+        </section>
+        <section id="submit-song">
+            <h2>Submit Your Song</h2>
+            <form id="songForm" onsubmit="submitSong(event)" style="max-width:400px;margin:auto;">
+                <label>Song Title:<br><input type="text" name="title" required></label><br>
+                <label>Artist:<br><input type="text" name="artist" required></label><br>
+                <label>Album:<br><input type="text" name="album" required></label><br>
+                <label>Genre:<br><input type="text" name="genre" required></label><br>
+                <label>Year:<br><input type="number" name="year" required></label><br>
+                <button type="submit">Submit Song</button>
+            </form>
+            <div id="songSubmitMsg" style="color:green;margin-top:1em;"></div>
+        </section>
+</body>
+<script>
+    // Digital clock
+    function updateClock() {
+        const now = new Date();
+        const h = String(now.getHours()).padStart(2, '0');
+        const m = String(now.getMinutes()).padStart(2, '0');
+        const s = String(now.getSeconds()).padStart(2, '0');
+        document.getElementById('clock').textContent = `${h}:${m}:${s}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+    // Movie play function
+    function playMovie(movieName) {
+        const msg = `Now playing: ${movieName}`;
+        document.getElementById('movie-play-message').textContent = msg;
+    }
+
+    // Slideshow data (array of objects)
+    const images = [
+        {
+            url: "lewis.jpg",
+            caption: "lewis Hamilton"
+        },
+        {
+            url: "ethiad.jpg",
+            caption: "f1 drifting"
+        },
+        {
+            url: "bmw.jpg",
+            caption: "bmws"
+        },
+        {
+            url: "its just me my self and i.jpg",
+            caption: "just me"
+        },
+        {
+            url: "hurri.jpg",
+            caption: "hurricaines"
+        },
+        {
+            url: "fera.jpg",
+            caption: "ferrari"
+        },
+        {
+            url: "arabian.jpg",
+            caption: "arabian car"
+        }
+    ];
+    let currentImg = 0;
+
+    function showImage(idx) {
+        const imgObj = images[idx];
+        document.getElementById('slideshow-img').src = imgObj.url;
+        document.getElementById('img-caption').textContent = imgObj.caption;
+    }
+
+    function prevImage() {
+        currentImg = (currentImg - 1 + images.length) % images.length;
+        showImage(currentImg);
+    }
+
+    function nextImage() {
+        currentImg = (currentImg + 1) % images.length;
+        showImage(currentImg);
+    }
+
+    // Initialize slideshow
+    window.onload = function() {
+        showImage(currentImg);
+    };
+
+    // Handle movie form submission
+    function submitMovie(event) {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const cast = form.cast.value;
+        const genre = form.genre.value;
+        const description = form.description.value;
+        const year = form.year.value;
+        document.getElementById('movieSubmitMsg').textContent = `Thank you! Movie "${name}" submitted.`;
+        form.reset();
+    }
+
+    // Handle song form submission
+    function submitSong(event) {
+        event.preventDefault();
+        const form = event.target;
+        const title = form.title.value;
+        const artist = form.artist.value;
+        const album = form.album.value;
+        const genre = form.genre.value;
+        const year = form.year.value;
+        document.getElementById('songSubmitMsg').textContent = `Thank you! Song "${title}" submitted.`;
+        form.reset();
+    }
+</script>
+</body>
+</html>
